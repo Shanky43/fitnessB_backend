@@ -20,7 +20,7 @@ ProductRoute.get("/:equipment", async (req, res) => {
   // }
   try {
     let filteredProduct = await ProductModel.find(filters)
-    res.status(200).send({ products: filteredProduct });
+    res.status(200).send(filteredProduct);
 
   } catch (err) {
     res.status(400).send({ err: err.message });
@@ -35,7 +35,7 @@ ProductRoute.get("/exercise/:target", async (req, res) => {
   // }
   try {
     let filteredProduct = await ProductModel.find(filters)
-    res.status(200).send({ products: filteredProduct });
+    res.status(200).send(filteredProduct);
 
   } catch (err) {
     res.status(400).send({ err: err.message });
