@@ -12,7 +12,7 @@ ProductRoute.get("/", async (req, res) => {
     }
   });
   
-  ProductRoute.get("/:equipment",auth, async (req, res) => {
+  ProductRoute.get("/:equipment", async (req, res) => {
     let filters = { equipment: req.params.equipment };
     console.log(req.query)
     if (req.query.name) {
