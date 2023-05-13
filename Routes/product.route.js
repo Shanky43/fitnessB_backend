@@ -16,9 +16,6 @@ ProductRoute.get("/", async (req, res) => {
 ProductRoute.get("/:equipment", async (req, res) => {
   let filters = { equipment: req.params.equipment };
   console.log(req.query)
-  // if (req.query.name) {
-  //   filters.name = { $regex: req.query.name, $options: "i" };
-  // }
   try {
     let filteredProduct = await ProductModel.find(filters)
     res.status(200).send(filteredProduct);
@@ -29,12 +26,8 @@ ProductRoute.get("/:equipment", async (req, res) => {
   }
 });
 
-ProductRoute.get("/:equipments/:id", async (req, res) => {
+ProductRoute.get("gym/equipment/:id", async (req, res) => {
   const { id } = req.params
-  console.log(req.query)
-  // if (req.query.name) {
-  //   filters.name = { $regex: req.query.name, $options: "i" };
-  // }
   try {
     let filteredProduct = await ProductModel.findById({ _id: id })
     res.status(200).send(filteredProduct);
@@ -47,7 +40,7 @@ ProductRoute.get("/:equipments/:id", async (req, res) => {
 
 
 
-ProductRoute.get("/:exercise/:target", async (req, res) => {
+ProductRoute.get("/exercise/:target", async (req, res) => {
   let filters = { target: req.params.target };
 
   try {
@@ -61,6 +54,18 @@ ProductRoute.get("/:exercise/:target", async (req, res) => {
 });
 
 ProductRoute.get("/exercise/:target/:id", async (req, res) => {
+
+  const { id } = req.params
+  console.log(id, "line66")
+  try {
+    let filteredProduct = await ProductModel.findById({ _id: id })
+    res.status(200).send(filteredProduct);
+
+  } catch (err) {
+    res.status(400).send({ err: err.message });
+  }
+});
+ProductRoute.get("/:id", async (req, res) => {
 
   const { id } = req.params
   console.log(id, "line66")
