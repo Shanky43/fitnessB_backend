@@ -28,7 +28,7 @@ ProductRoute.get("/:equipment", async (req, res) => {
 });
 
 ProductRoute.get("/:target", async (req, res) => {
-  let filters = { equipment: req.params.equipment };
+  let filters = { target: req.params.target };
   console.log(req.query)
   if (req.query.name) {
     filters.name = { $regex: req.query.name, $options: "i" };
@@ -41,4 +41,5 @@ ProductRoute.get("/:target", async (req, res) => {
     res.status(400).send({ err: err.message });
   }
 });
+
 module.exports = { ProductRoute };
