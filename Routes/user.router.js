@@ -43,7 +43,7 @@ userRouter.post("/login", async (req, res) => {
         if (result) {
           const token = jwt.sign(
             { userId: user._id, userName: user.name },
-            "shhhhh"
+            "fitnessB"
           );
           console.log(result, user, token);
           res
